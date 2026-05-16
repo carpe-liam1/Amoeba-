@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amoeba - Text Distortion Tool</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inder&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="amoeba-container">
+        <!-- Header -->
+        <header class="amoeba-header">
+            <div class="amoeba-header-left">Back to Sketchbook</div>
+            <div class="amoeba-header-title">Amoeba</div>
+        </header>
+
+        <!-- Main layout -->
+        <div class="amoeba-main">
+            <!-- Left Sidebar -->
+            <div class="amoeba-sidebar">
+                <!-- Text Input -->
+                <div class="amoeba-text-input-wrapper">
+                    <input id="textInput" type="text" placeholder="Type your text here" class="amoeba-text-input">
+                </div>
+
+                <!-- Slider section -->
+                <div class="amoeba-slider-section">
+                    <input id="distortionSlider" type="range" min="0" max="600" value="183" class="amoeba-slider">
+                    <div class="amoeba-slider-label">
+                        Distortion Size: <span id="distortionValue">183</span>
+                    </div>
+                </div>
+
+                <!-- About Amoeba -->
+                <div class="amoeba-about">
+                    <h2 class="amoeba-about-title">About Amoeba</h2>
+                    <p class="amoeba-about-text">
+                        Amoeba is an interactive text distortion tool. Type your text in the input above and manipulate the text with right clicking your mouse. The slider above allows you to adjust the size of your distortion. 
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right canvas panel -->
+            <div class="amoeba-canvas-panel">
+                <!-- Toolbar -->
+                <div class="amoeba-toolbar">
+                    <button id="undoBtn" class="amoeba-btn amoeba-btn-undo">Undo</button>
+                    <button id="redoBtn" class="amoeba-btn amoeba-btn-redo">Reset</button>
+                    <div class="amoeba-toolbar-spacer"></div>
+                    <button id="saveBtn" class="amoeba-btn amoeba-btn-save">Save</button>
+                </div>
+
+                <!-- Canvas Wrapper -->
+                <div id="canvas-parent" class="amoeba-canvas-wrapper">
+                    <!-- p5.js will inject the canvas here -->
+                    <div class="amoeba-canvas-placeholder" style="pointer-events: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Only one script tag here at the bottom -->
+    <script src="amoeba.js"></script>
+</body>
+</html>

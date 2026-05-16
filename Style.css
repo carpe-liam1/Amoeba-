@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #AAB7D4;
+  color: #000;
+  overflow: hidden;
+}
+
+.amoeba-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #AAB7D4;
+}
+
+/* Header Styles */
+.amoeba-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 2rem 1.5rem 0 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.amoeba-header-left {
+  font-family: 'Inder', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  flex: 0 1 auto;
+}
+
+.amoeba-header-title {
+  font-family: 'Inder', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Main Layout */
+.amoeba-main {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.amoeba-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 306px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Text Input */
+.amoeba-text-input-wrapper {
+  background-color: #D9D9D9;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+.amoeba-text-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.amoeba-text-input::placeholder {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* Slider Section */
+.amoeba-slider-section {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.amoeba-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  border-radius: 50px;
+  background: #0618BA;
+  outline: none;
+  cursor: pointer;
+}
+
+.amoeba-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #000E8A;
+  cursor: pointer;
+  margin-top: -11px;
+}
+
+.amoeba-slider::-moz-range-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #000E8A;
+  cursor: pointer;
+  border: none;
+}
+
+.amoeba-slider::-webkit-slider-runnable-track {
+  height: 16px;
+  border-radius: 50px;
+  background: #0618BA;
+}
+
+.amoeba-slider::-moz-range-track {
+  height: 16px;
+  border-radius: 50px;
+  background: #0618BA;
+  border: none;
+}
+
+.amoeba-slider-label {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #0618BA;
+  margin-top: 0.5rem;
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+/* About Amoeba */
+.amoeba-about {
+  margin-top: 2rem;
+}
+
+.amoeba-about-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1rem;
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.amoeba-about-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.5;
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+/* Canvas Panel */
+.amoeba-canvas-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background-color: transparent;
+}
+
+/* Toolbar */
+.amoeba-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: #D9D9D9;
+  height: 31px;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.amoeba-btn {
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, brightness 0.2s;
+}
+
+.amoeba-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.amoeba-btn-undo {
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  width: 145px;
+  height: 31px;
+}
+
+.amoeba-btn-undo:hover:not(:disabled) {
+  brightness: 0.9;
+}
+
+.amoeba-btn-redo {
+  background-color: #FFF;
+  color: #000;
+  font-size: 1rem;
+  width: 148px;
+  height: 31px;
+  margin-left: 41px;
+}
+
+.amoeba-btn-redo:hover:not(:disabled) {
+  brightness: 0.95;
+}
+
+.amoeba-toolbar-spacer {
+  flex: 1;
+}
+
+.amoeba-btn-save {
+  background-color: #75BD75;
+  color: #000;
+  font-size: 0.875rem;
+  width: 76px;
+  height: 31px;
+}
+
+.amoeba-btn-save:hover {
+  filter: brightness(1.05);
+}
+
+/* Canvas */
+.amoeba-canvas-wrapper {
+  flex: 1;
+  background-color: #D9D9D9;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.amoeba-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.amoeba-canvas-placeholder {
+  position: absolute;
+  font-family: 'Inder', sans-serif;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.1);
+  user-select: none;
+  pointer-events: none;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .amoeba-main {
+    flex-direction: column;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .amoeba-sidebar {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .amoeba-canvas-panel {
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .amoeba-canvas-wrapper {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .amoeba-header {
+    padding: 1rem 1rem 0 1rem;
+  }
+
+  .amoeba-main {
+    padding: 0.5rem 1rem 1rem 1rem;
+  }
+
+  .amoeba-header-left {
+    font-size: 1.25rem;
+  }
+
+  .amoeba-header-title {
+    font-size: 2.5rem;
+  }
+
+  .amoeba-about-title {
+    font-size: 1.75rem;
+  }
+
+  .amoeba-text-input {
+    font-size: 1.125rem;
+  }
+}
+
+
