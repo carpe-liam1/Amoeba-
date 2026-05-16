@@ -218,9 +218,7 @@ body {
   height: 31px;
 }
 
-.amoeba-btn-undo:hover:not(:disabled) {
-  brightness: 0.9;
-}
+
 
 .amoeba-btn-redo {
   background-color: #FFF;
@@ -330,4 +328,41 @@ body {
   }
 }
 
+/* Apply uniform spacing to all slider blocks */
+.amoeba-slider-group {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
 
+/* Fallback: Direct styling for your unique HTML class names */
+.amoeba-horizontal-slider-section,
+.amoeba-Vertical\ -slider-section {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Style the text labels for the two new sliders */
+.amoeba-horizontal-slider-label,
+.amoeba-vertical-slider-label {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #0618BA;
+  margin-top: 0.5rem;
+  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+/* Override the default sidebar layout to let elements push naturally */
+.amoeba-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 306px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  overflow-y: auto; /* Adds a scrollbar if sliders overflow small screens */
+}
+
+/* Push the about section down slightly below the final slider */
+.amoeba-about {
+  margin-top: 2.5rem;
+}

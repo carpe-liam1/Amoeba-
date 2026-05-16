@@ -1,11 +1,10 @@
-let font;
+
 let points = [];
 let pushStrength = 0.5;
 let isReverting = false;
-let userInput, distortionSlider;
+let userInput, distortionSlider, horizontalDistortionSlider, verticalDistortionSlider;
 
 function preload() {
-  // If this fails, the canvas stays blank. Ensure the file exists!
   font = loadFont('Avante.otf'); 
 }
 
@@ -23,6 +22,16 @@ function setup() {
     select('#distortionValue').html(distortionSlider.value());
   });
 
+  horizontalDistortionSlider = select('#horizontalDistortionSlider');
+  horizontalDistortionSlider.input(() => {
+    select('#horizontalDistortionValue').html(horizontalDistortionSlider.value());
+  });
+
+  verticalDistortionSlider = select('#verticalDistortionSlider');
+  verticalDistortionSlider.input(() => {
+    select('#verticalDistortionValue').html(verticalDistortionSlider.value());
+  });
+
   // Buttons
   select('#undoBtn').mousePressed(() => isReverting = !isReverting);
   select('#redoBtn').mousePressed(resetPoints);
@@ -35,7 +44,6 @@ function updateTextPoints() {
   let txt = userInput.value() || "AMOEBA";
   points = [];
   
-  // Adjusted factor and size to fit your layout
   let textPoints = font.textToPoints(txt, width/8, height/1.8, 150, {
     sampleFactor: 0.5
   });
@@ -53,9 +61,13 @@ function resetPoints() {
 }
 
 function draw() {
-  background(217); // Matches #D9D9D9
+  background(217); 
   
   let maxDist = int(distortionSlider.value());
+  // Read dynamic slider values continuously during calculation
+  let currentHorizontalPush = float(horizontalDistortionSlider.value());
+  let currentVerticalPush = float(verticalDistortionSlider.value());
+
   fill(0, 14, 138); 
   noStroke();
 
@@ -65,8 +77,9 @@ function draw() {
     if (mouseIsPressed && d < maxDist) {
       let dx = p.currX - mouseX;
       let dy = p.currY - mouseY;
-      p.currX += (dx / d) * 12 * pushStrength;
-      p.currY += (dy / d) * 0.75 * pushStrength;
+      // Replaced hardcoded values with slider input values
+      p.currX += (dx / d) * 0.25 * currentHorizontalPush * pushStrength;
+      p.currY += (dy / d) * 0.25 * currentVerticalPush * pushStrength;
     }
 
     if (isReverting) {

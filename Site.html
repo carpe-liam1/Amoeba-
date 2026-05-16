@@ -27,19 +27,34 @@
                     <input id="textInput" type="text" placeholder="Type your text here" class="amoeba-text-input">
                 </div>
 
+
                 <!-- Slider section -->
-                <div class="amoeba-slider-section">
+                <div class="amoeba-slider-section amoeba-slider-group">
                     <input id="distortionSlider" type="range" min="0" max="600" value="183" class="amoeba-slider">
                     <div class="amoeba-slider-label">
                         Distortion Size: <span id="distortionValue">183</span>
                     </div>
                 </div>
 
+<div class="amoeba-horizontal-slider-section amoeba-slider-group">
+    <input id="horizontalDistortionSlider" type="range" min="1" max="100" value="5" step="1" class="amoeba-slider">
+    <div class="amoeba-horizontal-slider-label">
+        Horizontal Strength: <span id="horizontalDistortionValue">5</span>
+    </div>
+</div>
+
+<div class="amoeba-vertical-slider-section amoeba-slider-group">
+    <input id="verticalDistortionSlider" type="range" min="1" max="100" value="5" step="1" class="amoeba-slider">
+    <div class="amoeba-vertical-slider-label">
+        Vertical Strength: <span id="verticalDistortionValue">5</span>
+    </div>
+</div>
+
                 <!-- About Amoeba -->
                 <div class="amoeba-about">
                     <h2 class="amoeba-about-title">About Amoeba</h2>
                     <p class="amoeba-about-text">
-                        Amoeba is an interactive text distortion tool. Type your text in the input above and manipulate the text with right clicking your mouse. The slider above allows you to adjust the size of your distortion. 
+                        Amoeba is an interactive text distortion tool. Type your text in the input above and manipulate the text with right clicking your mouse. The slider above allows you to adjust the size of your distortion. Click undo once to have the text shift back to its original position. Click undo again to pause the shift back. Save to download your distorted text as a PNG image. 
                     </p>
                 </div>
             </div>
