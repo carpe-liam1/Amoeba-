@@ -12,23 +12,58 @@
 </head>
 <body>
     <div class="amoeba-container">
-        <!-- Header -->
-        <header class="amoeba-header">
-            <div class="amoeba-header-left">Back to Sketchbook</div>
-            <div class="amoeba-header-title">Amoeba</div>
-        </header>
+    
+      <header class="amoeba-header">
+  <div class="amoeba-header-left">
+    <a href="#">Back to sketchbook</a>
+  </div>
+  
+  <div class="amoeba-header-right">
+    
+    <!-- Early Models Dropdown -->
+    <div class="amoeba-header-early dropdown">
+      <span class="dropbtn">Early models</span>
+      <div class="dropdown-content">
+        <a href="https://carpe-liam1.github.io/Sketchbook/amoeba-continuation/distortionImprovement.html">Amoeba Demo</a>
+        <a href="https://carpe-liam1.github.io/Sketchbook/Micro-Project-Final/progress.html">Initial Type version</a>
+        <a href="https://carpe-liam1.github.io/Sketchbook/Micro-Project-progress2/progress.html">Progress 2</a>
+        <a href="https://carpe-liam1.github.io/Sketchbook/Micro-Project-progress1/progress.html">Progress 1</a>
+        <a href="https://carpe-liam1.github.io/Sketchbook/Micro-Project/system.html">Initial Sketches</a>
+      </div>
+    </div>
 
-        <!-- Main layout -->
+    <!-- Main Title -->
+    <div class="amoeba-header-title">Amoeba</div>
+
+    <!-- New Iterations Dropdown -->
+    <div class="amoeba-header-late dropdown">
+      <span class="dropbtn">New iterations</span>
+      <div class="dropdown-content">
+        <a href="#iteration-alpha">Trailing lines</a>
+
+      </div>
+    </div>
+
+    <button class="amoeba-hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
+  </div>
+</header>
+
+  
         <div class="amoeba-main">
-            <!-- Left Sidebar -->
+      
             <div class="amoeba-sidebar">
-                <!-- Text Input -->
-                <div class="amoeba-text-input-wrapper">
-                    <input id="textInput" type="text" placeholder="Type your text here" class="amoeba-text-input">
-                </div>
+    
+               <div class="amoeba-text-input-wrapper">
+  <!-- Changed from input to textarea to support the Enter key -->
+  <textarea id="textInput" placeholder="Type your text here" class="amoeba-text-input"></textarea>
+</div>
 
-
-                <!-- Slider section -->
+    
                 <div class="amoeba-slider-section amoeba-slider-group">
                     <input id="distortionSlider" type="range" min="0" max="600" value="183" class="amoeba-slider">
                     <div class="amoeba-slider-label">
@@ -50,7 +85,7 @@
     </div>
 </div>
 
-                <!-- About Amoeba -->
+           
                 <div class="amoeba-about">
                     <h2 class="amoeba-about-title">About Amoeba</h2>
                     <p class="amoeba-about-text">
@@ -59,9 +94,9 @@
                 </div>
             </div>
 
-            <!-- Right canvas panel -->
+
             <div class="amoeba-canvas-panel">
-                <!-- Toolbar -->
+            
                 <div class="amoeba-toolbar">
                     <button id="undoBtn" class="amoeba-btn amoeba-btn-undo">Undo</button>
                     <button id="redoBtn" class="amoeba-btn amoeba-btn-redo">Reset</button>
@@ -69,16 +104,16 @@
                     <button id="saveBtn" class="amoeba-btn amoeba-btn-save">Save</button>
                 </div>
 
-                <!-- Canvas Wrapper -->
+        
                 <div id="canvas-parent" class="amoeba-canvas-wrapper">
-                    <!-- p5.js will inject the canvas here -->
+              
                     <div class="amoeba-canvas-placeholder" style="pointer-events: none;"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Only one script tag here at the bottom -->
+
     <script src="amoeba.js"></script>
 </body>
 </html>

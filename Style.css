@@ -13,21 +13,40 @@ html, body {
 body {
   background-color: #AAB7D4;
   color: #000;
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+.amoeba-hamburger {
+  display: none; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  padding: 5px;
+  z-index: 1000;
+}
+
+.amoeba-hamburger span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #000000; 
+  transition: all 0.3s ease;
 }
 
 .amoeba-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #AAB7D4;
 }
 
-/* Header Styles */
+
 .amoeba-header {
-  display: flex;
-  align-items: flex-start;
+display: grid;
+  grid-template-columns: 1fr 4.75fr;
   justify-content: space-between;
   padding: 2rem 1.5rem 0 1.5rem;
   gap: 1rem;
@@ -36,18 +55,111 @@ body {
 
 .amoeba-header-left {
   font-family: 'Inder', sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1rem, 2vw, 2.5rem);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1;
   text-align: center;
   flex: 0 1 auto;
+  justify-content: center;
+  margin-top: 1rem;
+
+}
+.amoeba-header-left a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.amoeba-header-left a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.amoeba-header-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 }
 
 .amoeba-header-title {
   font-family: 'Inder', sans-serif;
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.2;
+}
+
+.amoeba-header-early, .amoeba-header-title, .amoeba-header-late {
+  text-align: center;
+}
+
+.amoeba-header-early, .amoeba-header-late {
+  font-family: 'Inder', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.amoeba-header-early,
+.amoeba-header-late {
+  position: relative; 
+  display: inline-block; 
+}
+.amoeba-header-early, 
+.amoeba-header-late {
+  position: relative;        
+  display: block;            
+  background-color: #1a1a1a; 
+  color: #ffffff;            
+  padding: 10px 20px;        
+  border-radius: 6px;        
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  height: max-content;       
+  align-self: center;        
+}
+
+/* Subtle feedback when hover begins over a dark box */
+.amoeba-header-early:hover, 
+.amoeba-header-late:hover {
+  background-color: #2b2b2b;
+}
+
+/* 2. Position the dropdown box directly underneath the dark box */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;                 
+  left: 0;                   
+  width: 100%;               
+  min-width: 160px;          
+  background-color: #2b2b2b; 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  z-index: 999;              
+  overflow: hidden;
+}
+
+/* 3. Action rule: Reveal dropdown menu box on container hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 4. Individual Dropdown Menu Links Style */
+.dropdown-content a {
+  color: #ffffff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1rem;
+  text-align: left;          
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #444444; 
 }
 
 /* Main Layout */
@@ -80,15 +192,17 @@ body {
   padding: 0.75rem;
 }
 
-.amoeba-text-input {
+css.amoeba-text-input {
   width: 100%;
   background: transparent;
   border: none;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.65);
-  font-family: 'Instrument Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
+  resize: none;         
+  height: 100%;        
 }
 
 .amoeba-text-input::placeholder {
@@ -230,7 +344,7 @@ body {
 }
 
 .amoeba-btn-redo:hover:not(:disabled) {
-  brightness: 0.95;
+  filter: brightness(0.95);
 }
 
 .amoeba-toolbar-spacer {
@@ -359,10 +473,75 @@ body {
   max-width: 306px;
   margin-right: 1.5rem;
   flex-shrink: 0;
-  overflow-y: auto; /* Adds a scrollbar if sliders overflow small screens */
+  overflow-y: auto; 
 }
 
-/* Push the about section down slightly below the final slider */
+
 .amoeba-about {
   margin-top: 2.5rem;
+}
+
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .amoeba-main {
+    flex-direction: column; 
+  }
+
+  .amoeba-sidebar {
+    width: 100%;
+    max-width: none; 
+    margin-bottom: 2rem; 
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .amoeba-header-left, 
+  .amoeba-header-early, 
+  .amoeba-header-late {
+    display: none ;
+  }
+
+
+  .amoeba-header {
+    display: flex;
+    justify-content: center ;
+    align-items: center ;
+    padding: 1.5rem ;
+    position: relative ;
+    width: 100%;
+    height: 80px ; 
+  }
+
+  .amoeba-hamburger {
+    display: flex !important;
+    position: absolute !important;
+    left: 1.5rem !important;
+    top: 25px !important; 
+    z-index: 1000 !important;
+  }
+
+
+  .amoeba-header-right {
+    display: block ;
+    width: 100% ;
+  }
+
+
+  .amoeba-header-title {
+    display: block;
+    text-align: center;
+    width: 100% ;
+    margin: 0 ;
+    
+
+    font-size: 3rem !important; 
+    font-family: 'Inder', sans-serif;
+    font-weight: 400;
+    line-height: 1;
+
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 }

@@ -41,15 +41,53 @@ function setup() {
 }
 
 function updateTextPoints() {
-  let txt = userInput.value() || "AMOEBA";
+  let rawTxt = userInput.value() || "AMOEBA";
   points = [];
   
-  let textPoints = font.textToPoints(txt, width/8, height/1.8, 150, {
-    sampleFactor: 0.5
-  });
+  if (!font) return;
 
-  for (let pt of textPoints) {
-    points.push({ baseX: pt.x, baseY: pt.y, currX: pt.x, currY: pt.y });
+  let fontSize = 150; // Retaining your exact desktop font size
+  let lineSpacing = fontSize * 1.1; // Distance between stacked lines
+  let startX = width / 8; // Restored safety margin: text always starts safely inside the screen
+  let baseStartY = height / 1.8; // Your original baseline height for line 1
+
+  
+  let maxLineWidth = width - (startX * 2); 
+
+ 
+  let paragraphs = rawTxt.split('\n');
+  let finalLines = [];
+
+  for (let para of paragraphs) {
+    let words = para.split(' ');
+    let currentLine = "";
+
+    for (let word of words) {
+      let testLine = currentLine === "" ? word : currentLine + " " + word;
+      let bbox = font.textBounds(testLine, 0, 0, fontSize);
+      
+      if (bbox.w > maxLineWidth && currentLine !== "") {
+        finalLines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = testLine;
+      }
+    }
+    if (currentLine !== "") {
+      finalLines.push(currentLine);
+    }
+  }
+
+  for (let i = 0; i < finalLines.length; i++) {
+    let currentLineText = finalLines[i];
+    
+    let currentLineY = baseStartY + (i * lineSpacing);
+
+    let textPoints = font.textToPoints(currentLineText, startX, currentLineY, fontSize, { sampleFactor: 0.5 });
+    
+    for (let pt of textPoints) {
+      points.push({ baseX: pt.x, baseY: pt.y, currX: pt.x, currY: pt.y });
+    }
   }
 }
 
@@ -64,7 +102,6 @@ function draw() {
   background(217); 
   
   let maxDist = int(distortionSlider.value());
-  // Read dynamic slider values continuously during calculation
   let currentHorizontalPush = float(horizontalDistortionSlider.value());
   let currentVerticalPush = float(verticalDistortionSlider.value());
 
@@ -77,7 +114,6 @@ function draw() {
     if (mouseIsPressed && d < maxDist) {
       let dx = p.currX - mouseX;
       let dy = p.currY - mouseY;
-      // Replaced hardcoded values with slider input values
       p.currX += (dx / d) * 0.25 * currentHorizontalPush * pushStrength;
       p.currY += (dy / d) * 0.25 * currentVerticalPush * pushStrength;
     }
